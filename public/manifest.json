@@ -1,0 +1,10 @@
+{
+  "name": "Custom new tab page",
+  "description": "This overrides the default new tab page",
+  "version": "1.0",
+  "incognito": "split",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "manifest_version": 3
+}
