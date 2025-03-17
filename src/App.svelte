@@ -55,6 +55,3 @@
   <Search {darkMode} />
   <Datetime {darkMode} />
 </main>
-
-<style>
-</style>
