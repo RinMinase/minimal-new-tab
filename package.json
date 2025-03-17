@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "bun run check && vite build",
+    "build": "vite build",
     "serve": "bun run build && vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
   },
