@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  const INTERVAL_MS = 30_000;
   let props = $props();
 
   let hour12 = $state(false);
@@ -20,11 +21,15 @@
     return new Date().toString().split(" ").slice(1, 4).join(" ");
   };
 
-  $effect(() => {
+  const createInterval = () => {
     timer = setInterval(() => {
       time = getTime();
-      date = getDate()
-    }, 30_000);
+      date = getDate();
+    }, INTERVAL_MS);
+  };
+
+  $effect(() => {
+    createInterval();
 
     return () => {
       if (timer) clearInterval(timer);
@@ -32,17 +37,30 @@
   });
 
   onMount(() => {
-    if (localStorage.getItem('hour12')) {
-      hour12 = !!localStorage.getItem('hour12');
+    if (localStorage.getItem("hour12")) {
+      hour12 = !!localStorage.getItem("hour12");
     }
 
-    time = getTime(!!localStorage.getItem('hour12'));
+    time = getTime(!!localStorage.getItem("hour12"));
     date = getDate();
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") {
+        if (timer) clearInterval(timer);
+      } else {
+        if (!timer) {
+          createInterval();
+        } else {
+          clearInterval(timer);
+          createInterval();
+        }
+      }
+    });
   });
 
   const changeTimeType = () => {
     time = getTime(!hour12);
-    localStorage.setItem('hour12', `${!hour12}`);
+    localStorage.setItem("hour12", `${!hour12}`);
 
     hour12 = !hour12;
   };
