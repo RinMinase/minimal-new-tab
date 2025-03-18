@@ -18,7 +18,7 @@ An extremely lightweight, minimalistic new tab. Contents of it are only a dark/l
 
 ## Adding the extension to Chrome
 
-**Note**: Due to Google Chrome's limitation on installing non-store CRX (Chrome Extensions) files, you need to need to install it with the built files.
+**Note**: Due to Google Chrome's limitation on installing non-store CRX (Chrome Extensions) files, you need to need to enable `Developer mode` install it with the built files.
 
 1. Navigate to the [releases section](https://github.com/RinMinase/minimal-new-tab/releases) and download the latest release, or [click here](https://github.com/RinMinase/minimal-new-tab/releases/latest/download/newtab.zip) to download it.
 
@@ -38,8 +38,6 @@ An extremely lightweight, minimalistic new tab. Contents of it are only a dark/l
 
 ## Updating the extension in Chrome
 
-Process is set to manual to prevent "additional components" being added to the page
-
 1. Navigate to the [releases section](https://github.com/RinMinase/minimal-new-tab/releases) and download the latest release, or [click here](https://github.com/RinMinase/minimal-new-tab/releases/latest/download/newtab.zip) to download it.
 
 2. Unzip the file using your prefered tool.
@@ -51,6 +49,8 @@ Process is set to manual to prevent "additional components" being added to the p
 5. You should be able to see a "Reload" icon near the toggle switch of the extension.
 
 6. Click the "Reload" button.
+
+7. You should see any information such as the version be changed.
 
 
 ## Compiling the project
@@ -127,3 +127,5 @@ This would ease the process of you installing and updating this extension.
 But... I would need to pay a one-time fee of $5 for this basic extension, which no one would probably use. Ref: https://developer.chrome.com/docs/webstore/register.
 
 Besides, if you are suspicious of this extension, you may check the mere 200 lines of code in this repository if there is anything which would take your data. Which, background tasks like those would chew up the precious memory I was complaining on in the first place. :)
+
+Lastly, [here you go](https://www.virustotal.com/gui/search/https%253A%252F%252Fgithub.com%252FRinMinase%252Fminimal-new-tab%252Freleases%252Flatest%252Fdownload%252Fnewtab.zip) (VirusTotal link for the latest release). Not sure if this would satisfy you.
