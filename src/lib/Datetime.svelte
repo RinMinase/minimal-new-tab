@@ -9,6 +9,9 @@
   let date = $state("");
   let timer: number | undefined = $state();
 
+  let timeString = $derived(time.replace(/ (A|P)M/, ""))
+  let timeAmPm = $derived(time.replace(/\d\d:\d\d ?/, ""))
+
   const getTime = (type?: boolean) => {
     return new Date().toLocaleTimeString("en-US", {
       hour12: type !== undefined ? type : hour12,
@@ -37,11 +40,8 @@
   });
 
   onMount(() => {
-    if (localStorage.getItem("hour12")) {
-      hour12 = !!localStorage.getItem("hour12");
-    }
-
-    time = getTime(!!localStorage.getItem("hour12"));
+    hour12 = localStorage.getItem("hour12") === 'true';
+    time = getTime(hour12);
     date = getDate();
 
     document.addEventListener("visibilitychange", () => {
@@ -76,14 +76,14 @@
   <h1 class="flex justify-center items-center font-[500]">
     <span class="flex items-end">
       <span class="text-[160px] tracking-[-5px]">
-        {time.replace(/ (A|P)M/, "")}
+        {timeString}
       </span>
       <span class="inline-flex text-[80px] pb-4 pl-2">
-        {time.replace(/\d\d:\d\d ?/, "")}
+        {timeAmPm}
       </span>
     </span>
     <span
-      class="flex items-center border border-slate-300 p-2 rounded-xl cursor-pointer ml-8 opacity-50 hover:opacity-100 transition-opacity ease-in"
+      class="flex items-center border border-slate-300 p-2 rounded-xl cursor-pointer ml-8 opacity-50 hover:opacity-100 select-none transition-opacity ease-in"
       onclick={changeTimeType}
     >
       ···
